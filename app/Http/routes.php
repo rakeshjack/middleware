@@ -12,9 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $user=Auth::user();
+    if($user->isAdmin()) {
+        echo "I am a Administrator";
+    }
+//    return view('welcome');
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/admin/user/roles',['middleware' =>['role','auth','web'],function() {
+    return "Middleware role";
+}]);
