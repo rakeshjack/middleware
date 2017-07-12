@@ -27,7 +27,7 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo('App\Role');
     }
-    public function isAdmin() {
+    public function IsAdmin() {
         if($this->role->name=='administrator') {
             return true;
         }
